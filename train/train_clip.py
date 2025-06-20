@@ -318,7 +318,7 @@ def train_and_evaluate(dataset_name):
     set_up_trainable_param(clip_model, args)
     
     # Print trainable parameter information
-    print_trainable_parameters(clip_model)
+    # print_trainable_parameters(clip_model)
     
     # Setup optimizer with proper parameter groups
     optimizer = setup_optimizer(clip_model, args.lr)
@@ -357,11 +357,12 @@ def train_and_evaluate(dataset_name):
         optimizers=(optimizer, None)
     )
 
-    print("Starting training...")
+    print_rank_0("Starting training...", args.global_rank)
     trainer.train()
 
     eval_results = trainer.evaluate(test_dataset)
-    print_rank_0(f"Test accuracy: {eval_results['eval_accuracy']*100:.2f}%")
+    # breakpoint()
+    print_rank_0(f"Test accuracy: {eval_results['eval_accuracy']*100:.2f}%", args.global_rank)
 
 
 if __name__ == "__main__":

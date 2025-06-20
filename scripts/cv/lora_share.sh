@@ -13,9 +13,9 @@ name=lora_share_rank8
 seeds=("42")
 gpu_id=0
 
-datasets=("stanford_cars" "RESISC45" "dtd" "svhn" "EuroSAT" "GTSRB" "sun397")
+# datasets=("stanford_cars" "RESISC45" "dtd" "svhn" "EuroSAT" "GTSRB" "sun397")
 # datasets=("EuroSAT")
-# datasets=("sun397")
+datasets=("sun397")
 
 for dataset in "${datasets[@]}"
 do
